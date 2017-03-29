@@ -12,6 +12,7 @@
 		AD630C3A1E8C06D6007650F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD630C381E8C06D6007650F5 /* Main.storyboard */; };
 		AD630C3C1E8C06D6007650F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD630C3B1E8C06D6007650F5 /* Assets.xcassets */; };
 		AD630C3F1E8C06D6007650F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD630C3D1E8C06D6007650F5 /* LaunchScreen.storyboard */; };
+		AD87F2D31E8C3C1B005AA462 /* BezierExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2D21E8C3C1B005AA462 /* BezierExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		AD630C3B1E8C06D6007650F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD630C3E1E8C06D6007650F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD630C401E8C06D6007650F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD87F2D21E8C3C1B005AA462 /* BezierExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				AD630C341E8C06D6007650F5 /* AppDelegate.swift */,
 				AD630C361E8C06D6007650F5 /* ViewController.swift */,
+				AD87F2D21E8C3C1B005AA462 /* BezierExtension.swift */,
 				AD630C381E8C06D6007650F5 /* Main.storyboard */,
 				AD630C3B1E8C06D6007650F5 /* Assets.xcassets */,
 				AD630C3D1E8C06D6007650F5 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				AD630C371E8C06D6007650F5 /* ViewController.swift in Sources */,
 				AD630C351E8C06D6007650F5 /* AppDelegate.swift in Sources */,
+				AD87F2D31E8C3C1B005AA462 /* BezierExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +306,7 @@
 				AD630C451E8C06D6007650F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
