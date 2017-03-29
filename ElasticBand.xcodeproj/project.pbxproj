@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AD630C311E8C06D6007650F5 /* ElasticBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElasticBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD630C311E8C06D6007650F5 /* Elastic Band.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Elastic Band.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD630C341E8C06D6007650F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD630C361E8C06D6007650F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AD630C391E8C06D6007650F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		AD630C321E8C06D6007650F5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD630C311E8C06D6007650F5 /* ElasticBand.app */,
+				AD630C311E8C06D6007650F5 /* Elastic Band.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,7 +81,7 @@
 			);
 			name = ElasticBand;
 			productName = ElasticBand;
-			productReference = AD630C311E8C06D6007650F5 /* ElasticBand.app */;
+			productReference = AD630C311E8C06D6007650F5 /* Elastic Band.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -265,7 +265,7 @@
 				INFOPLIST_FILE = ElasticBand/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = michaeledenzon.ElasticBand;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Elastic Band";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -278,7 +278,7 @@
 				INFOPLIST_FILE = ElasticBand/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = michaeledenzon.ElasticBand;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Elastic Band";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
