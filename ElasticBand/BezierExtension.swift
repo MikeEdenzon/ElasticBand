@@ -9,8 +9,13 @@
 import UIKit
 
 extension UIBezierPath {
+    
     func interpolate(points : [CGPoint], alpha : CGFloat = 1.0/3.0) {
+        
         guard !points.isEmpty else { return }
+        
+        self.removeAllPoints()
+        
         self.move(to: points[0])
         
         let n = points.count - 1
