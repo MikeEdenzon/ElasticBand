@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD3AC9CC1E996C1400F3D567 /* InteractiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AC9CB1E996C1400F3D567 /* InteractiveView.swift */; };
+		AD3AC9CF1E996C9A00F3D567 /* ElasticLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AC9CD1E996C9A00F3D567 /* ElasticLayer.swift */; };
+		AD3AC9D01E996C9A00F3D567 /* SnapAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AC9CE1E996C9A00F3D567 /* SnapAnimation.swift */; };
 		AD630C351E8C06D6007650F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD630C341E8C06D6007650F5 /* AppDelegate.swift */; };
 		AD630C371E8C06D6007650F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD630C361E8C06D6007650F5 /* ViewController.swift */; };
 		AD630C3A1E8C06D6007650F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD630C381E8C06D6007650F5 /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD3AC9CB1E996C1400F3D567 /* InteractiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveView.swift; sourceTree = "<group>"; };
+		AD3AC9CD1E996C9A00F3D567 /* ElasticLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticLayer.swift; sourceTree = "<group>"; };
+		AD3AC9CE1E996C9A00F3D567 /* SnapAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapAnimation.swift; sourceTree = "<group>"; };
 		AD630C311E8C06D6007650F5 /* Elastic Band.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Elastic Band.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD630C341E8C06D6007650F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD630C361E8C06D6007650F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +64,9 @@
 			children = (
 				AD630C341E8C06D6007650F5 /* AppDelegate.swift */,
 				AD630C361E8C06D6007650F5 /* ViewController.swift */,
+				AD3AC9CB1E996C1400F3D567 /* InteractiveView.swift */,
+				AD3AC9CD1E996C9A00F3D567 /* ElasticLayer.swift */,
+				AD3AC9CE1E996C9A00F3D567 /* SnapAnimation.swift */,
 				AD87F2D21E8C3C1B005AA462 /* BezierExtension.swift */,
 				AD630C381E8C06D6007650F5 /* Main.storyboard */,
 				AD630C3B1E8C06D6007650F5 /* Assets.xcassets */,
@@ -140,8 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD3AC9CF1E996C9A00F3D567 /* ElasticLayer.swift in Sources */,
 				AD630C371E8C06D6007650F5 /* ViewController.swift in Sources */,
+				AD3AC9CC1E996C1400F3D567 /* InteractiveView.swift in Sources */,
 				AD630C351E8C06D6007650F5 /* AppDelegate.swift in Sources */,
+				AD3AC9D01E996C9A00F3D567 /* SnapAnimation.swift in Sources */,
 				AD87F2D31E8C3C1B005AA462 /* BezierExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
