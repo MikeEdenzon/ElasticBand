@@ -126,6 +126,14 @@ extension UIBezierPath {
         
         return path
     }
+    
+    func interpolateQuadCurve(from points: [CGPoint]) {
+  
+        guard points.count > 1 else { return }
+        self.removeAllPoints()
+        self.move(to: points[0])
+        self.addQuadCurve(to: points[2], controlPoint: points[1])
+    }
 }
 
 

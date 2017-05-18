@@ -89,7 +89,10 @@ class ElasticLayer: CAShapeLayer {
         var previousPoint = releasePoint
         for _ in 0..<5 {
             let point = responsePoint(from: previousPoint)
+            
+            //paths.append(UIBezierPath.interpolatedWith(points: [leftAnchor,point,rightAnchor]).cgPath)
             paths.append(UIBezierPath.interpolatedWith(points: [leftAnchor,point,rightAnchor]).cgPath)
+            
             previousPoint = point
         }
         paths.append(UIBezierPath.interpolatedWith(points: [leftAnchor,center,rightAnchor]).cgPath)
@@ -105,7 +108,9 @@ class ElasticLayer: CAShapeLayer {
         _rightAnchorPoint = right
         
         points = [leftAnchor,center,rightAnchor]
-        _bezierPath.interpolate(points: points)
+        
+        //_bezierPath.interpolate(points: points)
+        _bezierPath.interpolateQuadCurve(from: points)
     }
     
     func cross(between p1: CGPoint, and p2: CGPoint) {
@@ -116,7 +121,10 @@ class ElasticLayer: CAShapeLayer {
     
     func bend(to point: CGPoint) {
         points[1] = elasticPoint(from: center, to: point)
-        _bezierPath.interpolate(points: points)
+        
+        //_bezierPath.interpolate(points: points)
+        _bezierPath.interpolateQuadCurve(from: points)
+        
         path = _bezierPath.cgPath
     }
     
@@ -125,7 +133,10 @@ class ElasticLayer: CAShapeLayer {
             active = false
             advancedRebound(releasePoint: point)
             points[1] = center
-            _bezierPath.interpolate(points: points)
+            
+            //_bezierPath.interpolate(points: points)
+            _bezierPath.interpolateQuadCurve(from: points)
+            
             path = _bezierPath.cgPath
         }
     }
