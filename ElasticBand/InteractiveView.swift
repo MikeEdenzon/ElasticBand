@@ -11,7 +11,7 @@ import UIKit
 
 class InteractiveView: UIView {
     
-    var elastic: ElasticLayer!
+    var elasticLayers: [ElasticLayer] = []
     var anchorPoint: CGPoint!
     var activePoint: CGPoint!
     var releasePoint: CGPoint!
@@ -19,44 +19,70 @@ class InteractiveView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        elastic = ElasticLayer(frame: self.frame, color: UIColor.blue)
-        let offset = self.frame.width / 10
-        elastic.setAnchorPoints(left: CGPoint(x: offset, y: center.y), right: CGPoint(x: self.frame.width - offset, y: center.y))
-        elastic.bend(to: center)
-        self.layer.addSublayer(elastic)
+        
+        let inset = frame.width / 10
+        let y1 = center.y - 50
+        let y2 = center.y
+        let y3 = center.y + 50
+        
+        addElasticLayer(from: anchorPoints(inset: inset, y: y1), color: UIColor.blue)
+        addElasticLayer(from: anchorPoints(inset: inset, y: y2), color: UIColor.blue)
+        addElasticLayer(from: anchorPoints(inset: inset, y: y3), color: UIColor.blue)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    private func midpoint(between p1: CGPoint, and p2: CGPoint) -> CGPoint {
+        return CGPoint(x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2)
+    }
+    
+    private func anchorPoints(inset: CGFloat, y: CGFloat) -> [CGPoint] {
+        return [CGPoint(x: inset, y: y), CGPoint(x: frame.width - inset, y: y)]
+    }
+    
+    func addElasticLayer(from points: [CGPoint], color: UIColor) {
+        addElasticLayer(from: points[0], to: points[1], color: color)
+    }
+    
+    // Builds and adds elastic layer to view & array.
+    func addElasticLayer(from left: CGPoint, to right: CGPoint, color: UIColor) {
+        let elasticLayer = ElasticLayer(frame: self.frame, color: color)
+        elasticLayer.setAnchorPoints(left: left, right: right)
+        elasticLayer.bend(to: midpoint(between: left, and: right))
+        elasticLayers.append(elasticLayer)
+        self.layer.addSublayer(elasticLayer)
+    }
+    
+    // Bends multiple elastic bands.
+    func bend(touches: Set<UITouch>) {
         for touch in touches {
             let previousTouch = touch.precisePreviousLocation(in: self)
             let currentTouch = touch.preciseLocation(in: self)
-            elastic.cross(between: previousTouch, and: currentTouch)
-            if elastic.active {
-                elastic.bend(to: currentTouch)
+            for elasticLayer in elasticLayers {
+                elasticLayer.cross(between: previousTouch, and: currentTouch)
+                if elasticLayer.active {
+                    elasticLayer.bend(to: currentTouch)
+                }
             }
         }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let previousTouch = touch.precisePreviousLocation(in: self)
-            let currentTouch = touch.preciseLocation(in: self)
-            elastic.cross(between: previousTouch, and: currentTouch)
-            if elastic.active {
-                elastic.bend(to: currentTouch)
-            }
+    // Snaps multiple elastic bands.
+    func snap(touches: Set<UITouch>) {
+        for elasticLayer in elasticLayers {
+            elasticLayer.snap(from: (touches.first?.preciseLocation(in: self))!)
         }
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        elastic.snapback(from: (touches.first?.preciseLocation(in: self))!)
-    }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
+    // bend
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { bend(touches: touches) }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { bend(touches: touches) }
+    
+    // snap
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { snap(touches: touches) }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { snap(touches: touches) }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
