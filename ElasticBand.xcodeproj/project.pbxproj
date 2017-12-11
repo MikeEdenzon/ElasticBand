@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AD3AC9CC1E996C1400F3D567 /* InteractiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AC9CB1E996C1400F3D567 /* InteractiveView.swift */; };
 		AD3AC9CF1E996C9A00F3D567 /* ElasticLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AC9CD1E996C9A00F3D567 /* ElasticLayer.swift */; };
-		AD3AC9D01E996C9A00F3D567 /* SnapAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AC9CE1E996C9A00F3D567 /* SnapAnimation.swift */; };
 		AD630C351E8C06D6007650F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD630C341E8C06D6007650F5 /* AppDelegate.swift */; };
 		AD630C371E8C06D6007650F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD630C361E8C06D6007650F5 /* ViewController.swift */; };
 		AD630C3A1E8C06D6007650F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD630C381E8C06D6007650F5 /* Main.storyboard */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		AD3AC9CB1E996C1400F3D567 /* InteractiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveView.swift; sourceTree = "<group>"; };
 		AD3AC9CD1E996C9A00F3D567 /* ElasticLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElasticLayer.swift; sourceTree = "<group>"; };
-		AD3AC9CE1E996C9A00F3D567 /* SnapAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapAnimation.swift; sourceTree = "<group>"; };
 		AD630C311E8C06D6007650F5 /* Elastic Band.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Elastic Band.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD630C341E8C06D6007650F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD630C361E8C06D6007650F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 				AD630C361E8C06D6007650F5 /* ViewController.swift */,
 				AD3AC9CB1E996C1400F3D567 /* InteractiveView.swift */,
 				AD3AC9CD1E996C9A00F3D567 /* ElasticLayer.swift */,
-				AD3AC9CE1E996C9A00F3D567 /* SnapAnimation.swift */,
 				AD87F2D21E8C3C1B005AA462 /* BezierExtension.swift */,
 				AD630C381E8C06D6007650F5 /* Main.storyboard */,
 				AD630C3B1E8C06D6007650F5 /* Assets.xcassets */,
@@ -103,12 +100,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Michael Edenzon";
 				TargetAttributes = {
 					AD630C301E8C06D6007650F5 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 5HPXGDUGWR;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -153,7 +151,6 @@
 				AD630C371E8C06D6007650F5 /* ViewController.swift in Sources */,
 				AD3AC9CC1E996C1400F3D567 /* InteractiveView.swift in Sources */,
 				AD630C351E8C06D6007650F5 /* AppDelegate.swift in Sources */,
-				AD3AC9D01E996C9A00F3D567 /* SnapAnimation.swift in Sources */,
 				AD87F2D31E8C3C1B005AA462 /* BezierExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,7 +186,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -197,7 +196,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -239,7 +242,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -247,7 +252,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -282,7 +291,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = michaeledenzon.ElasticBand;
 				PRODUCT_NAME = "Elastic Band";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -295,7 +305,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = michaeledenzon.ElasticBand;
 				PRODUCT_NAME = "Elastic Band";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

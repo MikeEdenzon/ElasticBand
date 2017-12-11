@@ -59,7 +59,7 @@ class ElasticLayer: CAShapeLayer {
         let sy = copysign(1, dy)
         
         let d = distance(from: p1, to: p2)
-        let ld = log(d) + (d/3)
+        let ld = log(d) + (d/1.3)
         
         let px = ((abs(dx) / d) * ld) * sx
         let py = ((abs(dy) / d) * ld) * sy
@@ -68,7 +68,6 @@ class ElasticLayer: CAShapeLayer {
     }
     
     private func responsePoint(from previousPoint: CGPoint) -> CGPoint {
-        
         let dx = previousPoint.x - center.x
         let dy = previousPoint.y - center.y
         
@@ -78,65 +77,79 @@ class ElasticLayer: CAShapeLayer {
         let d = distance(from: previousPoint, to: center)
         
         let mx = ((d * abs(dx/d)) * sx) / 4
-        let my = ((d * abs(dy/d)) * sy) / 2
+        let my = ((d * abs(dy/d)) * sy) / 1.6
         
         return CGPoint(x: center.x + mx, y: center.y + my)
     }
     
-    private func advancedRebound(releasePoint: CGPoint) {
+    private func rebound(from releasePoint: CGPoint) {
         let animation = CAKeyframeAnimation(keyPath: "path")
         var paths = [CGPath]()
         var previousPoint = releasePoint
-        for _ in 0..<5 {
+        var count: Double = 0
+        while abs(center.y - previousPoint.y) > 7 {
             let point = responsePoint(from: previousPoint)
-            
-            //paths.append(UIBezierPath.interpolatedWith(points: [leftAnchor,point,rightAnchor]).cgPath)
-            paths.append(UIBezierPath.interpolatedWith(points: [leftAnchor,point,rightAnchor]).cgPath)
-            
+            paths.append(UIBezierPath.interpolatedQuadCurve(from: [leftAnchor,point,rightAnchor]).cgPath)
             previousPoint = point
+            count += 1
         }
-        paths.append(UIBezierPath.interpolatedWith(points: [leftAnchor,center,rightAnchor]).cgPath)
+        paths.append(UIBezierPath.interpolatedQuadCurve(from: [leftAnchor,center,rightAnchor]).cgPath)
         animation.values = paths
         animation.calculationMode = kCAAnimationLinear
         animation.isRemovedOnCompletion = true
-        animation.duration = 0.5
+        animation.duration = count / 12
         add(animation, forKey: "path")
     }
     
+    /// Set left and right anchor points.
+    ///
+    /// - Parameters:
+    ///   - left: Left anchor point.
+    ///   - right: Right anchor point.
     func setAnchorPoints(left: CGPoint, right: CGPoint) {
         _leftAnchorPoint = left
         _rightAnchorPoint = right
-        
         points = [leftAnchor,center,rightAnchor]
-        
-        //_bezierPath.interpolate(points: points)
         _bezierPath.interpolateQuadCurve(from: points)
     }
     
+    /// Check if an action (e.g. touches) crosses the band.
+    ///
+    /// - Parameters:
+    ///   - between: Point 1.
+    ///   - and: Point 2.
     func cross(between p1: CGPoint, and p2: CGPoint) {
         if ((p1.y <= center.y) && (p2.y >= center.y)) || ((p1.y >= center.y) && (p2.y <= center.y)) {
             active = true
         }
     }
     
+    /// Generates elastic point from given point and bends band to it.
+    ///
+    /// - Parameters:
+    ///   - to: Point to where elastic band should be bent.
     func bend(to point: CGPoint) {
         points[1] = elasticPoint(from: center, to: point)
-        
-        //_bezierPath.interpolate(points: points)
         _bezierPath.interpolateQuadCurve(from: points)
-        
         path = _bezierPath.cgPath
     }
     
-    func snapback(from point: CGPoint) {
+    func initialBend() {
+        points[1] = elasticPoint(from: center, to: center)
+        _bezierPath.interpolateQuadCurve(from: points)
+        path = _bezierPath.cgPath
+    }
+    
+    /// Snaps elastic band from release point.
+    ///
+    /// - Parameters:
+    ///   - from: Point where elastic band was released.
+    func snap(from point: CGPoint) {
         if active {
             active = false
-            advancedRebound(releasePoint: point)
+            rebound(from: point)
             points[1] = center
-            
-            //_bezierPath.interpolate(points: points)
             _bezierPath.interpolateQuadCurve(from: points)
-            
             path = _bezierPath.cgPath
         }
     }
@@ -145,27 +158,3 @@ class ElasticLayer: CAShapeLayer {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
