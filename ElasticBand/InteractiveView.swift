@@ -19,15 +19,7 @@ class InteractiveView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let inset = frame.width / 10
-        let y1 = center.y - 50
-        let y2 = center.y
-        let y3 = center.y + 50
-        
-        addElasticLayer(from: anchorPoints(inset: inset, y: y1), color: UIColor.blue)
-        addElasticLayer(from: anchorPoints(inset: inset, y: y2), color: UIColor.blue)
-        addElasticLayer(from: anchorPoints(inset: inset, y: y3), color: UIColor.blue)
+        addElasticLayer(from: anchorPoints(inset: frame.width / 10, y: center.y), color: Color.blue)
     }
     
     private func midpoint(between p1: CGPoint, and p2: CGPoint) -> CGPoint {
@@ -38,24 +30,28 @@ class InteractiveView: UIView {
         return [CGPoint(x: inset, y: y), CGPoint(x: frame.width - inset, y: y)]
     }
     
-    func addElasticLayer(from points: [CGPoint], color: UIColor) {
+    private func addElasticLayer(from points: [CGPoint], color: UIColor) {
         addElasticLayer(from: points[0], to: points[1], color: color)
     }
     
-    // Builds and adds elastic layer to view & array.
     func addElasticLayer(from left: CGPoint, to right: CGPoint, color: UIColor) {
+        
         let elasticLayer = ElasticLayer(frame: self.frame, color: color)
+        
         elasticLayer.setAnchorPoints(left: left, right: right)
         elasticLayer.bend(to: midpoint(between: left, and: right))
         elasticLayers.append(elasticLayer)
+        
         self.layer.addSublayer(elasticLayer)
     }
     
-    // Bends multiple elastic bands.
     func bend(touches: Set<UITouch>) {
+        
         for touch in touches {
+            
             let previousTouch = touch.precisePreviousLocation(in: self)
             let currentTouch = touch.preciseLocation(in: self)
+
             for elasticLayer in elasticLayers {
                 elasticLayer.cross(between: previousTouch, and: currentTouch)
                 if elasticLayer.active {
@@ -65,21 +61,27 @@ class InteractiveView: UIView {
         }
     }
     
-    // Snaps multiple elastic bands.
     func snap(touches: Set<UITouch>) {
         for elasticLayer in elasticLayers {
             elasticLayer.snap(from: (touches.first?.preciseLocation(in: self))!)
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        bend(touches: touches)
+    }
     
-    // bend
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { bend(touches: touches) }
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { bend(touches: touches) }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        bend(touches: touches)
+    }
     
-    // snap
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { snap(touches: touches) }
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { snap(touches: touches) }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        snap(touches: touches)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        snap(touches: touches)
+    }
     
     
     required init?(coder aDecoder: NSCoder) {

@@ -15,6 +15,7 @@
 		AD630C3C1E8C06D6007650F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD630C3B1E8C06D6007650F5 /* Assets.xcassets */; };
 		AD630C3F1E8C06D6007650F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD630C3D1E8C06D6007650F5 /* LaunchScreen.storyboard */; };
 		AD87F2D31E8C3C1B005AA462 /* BezierExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2D21E8C3C1B005AA462 /* BezierExtension.swift */; };
+		AD89029220EF0A3600AC17BB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD89029120EF0A3600AC17BB /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AD630C3E1E8C06D6007650F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD630C401E8C06D6007650F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD87F2D21E8C3C1B005AA462 /* BezierExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BezierExtension.swift; sourceTree = "<group>"; };
+		AD89029120EF0A3600AC17BB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				AD3AC9CB1E996C1400F3D567 /* InteractiveView.swift */,
 				AD3AC9CD1E996C9A00F3D567 /* ElasticLayer.swift */,
 				AD87F2D21E8C3C1B005AA462 /* BezierExtension.swift */,
+				AD89029120EF0A3600AC17BB /* Color.swift */,
 				AD630C381E8C06D6007650F5 /* Main.storyboard */,
 				AD630C3B1E8C06D6007650F5 /* Assets.xcassets */,
 				AD630C3D1E8C06D6007650F5 /* LaunchScreen.storyboard */,
@@ -100,7 +103,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Michael Edenzon";
 				TargetAttributes = {
 					AD630C301E8C06D6007650F5 = {
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD3AC9CF1E996C9A00F3D567 /* ElasticLayer.swift in Sources */,
+				AD89029220EF0A3600AC17BB /* Color.swift in Sources */,
 				AD630C371E8C06D6007650F5 /* ViewController.swift in Sources */,
 				AD3AC9CC1E996C1400F3D567 /* InteractiveView.swift in Sources */,
 				AD630C351E8C06D6007650F5 /* AppDelegate.swift in Sources */,
@@ -190,6 +194,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -197,6 +202,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -246,6 +252,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -253,6 +260,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
