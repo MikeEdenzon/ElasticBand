@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(InteractiveView(frame: view.frame))
+        view.addSubview(InteractiveView(frame: view.bounds))
     }
     
     override var shouldAutorotate: Bool {

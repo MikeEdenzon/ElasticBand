@@ -39,7 +39,7 @@ class ElasticLayer: CAShapeLayer {
     init(frame: CGRect, color: UIColor) {
         super.init()
         self.frame = frame
-        self.strokeColor = color.withAlphaComponent(0.5).cgColor
+        self.strokeColor = color.cgColor
         self.fillColor = nil
         self.lineWidth = 5
         self.lineJoin = kCALineJoinRound
@@ -47,10 +47,24 @@ class ElasticLayer: CAShapeLayer {
         self.path = _bezierPath.cgPath
     }
     
+    ///
+    /// Returns distance between two points.
+    ///
+    /// - Parameters:
+    ///   - from: First point.
+    ///   - to: Second point
+    ///
     private func distance(from p1: CGPoint, to p2: CGPoint) -> CGFloat {
         return abs(p2.x - p1.x) + abs(p2.y - p1.y)
     }
     
+    ///
+    /// Returns "elastic point" based on touch point.
+    ///
+    /// - Parameters:
+    ///   - from: First touch point
+    ///   - to: Current touch point
+    ///
     private func elasticPoint(from p1: CGPoint, to p2: CGPoint) -> CGPoint {
         let dx = p2.x - p1.x
         let dy = p2.y - p1.y
@@ -67,6 +81,12 @@ class ElasticLayer: CAShapeLayer {
         return CGPoint(x: p1.x + px, y: p1.y + py)
     }
     
+    ///
+    /// Returns response point for path rebound.
+    ///
+    /// - Parameters:
+    ///   - from: Point from which to calculate response.
+    ///
     private func responsePoint(from previousPoint: CGPoint) -> CGPoint {
         let dx = previousPoint.x - center.x
         let dy = previousPoint.y - center.y
@@ -82,6 +102,12 @@ class ElasticLayer: CAShapeLayer {
         return CGPoint(x: center.x + mx, y: center.y + my)
     }
     
+    ///
+    /// Animates path to rebound from given release point.
+    ///
+    /// - Parameters:
+    ///   - from: Point where touches ended.
+    ///
     private func rebound(from releasePoint: CGPoint) {
         let animation = CAKeyframeAnimation(keyPath: "path")
         var paths = [CGPath]()
@@ -101,11 +127,13 @@ class ElasticLayer: CAShapeLayer {
         add(animation, forKey: "path")
     }
     
+    ///
     /// Set left and right anchor points.
     ///
     /// - Parameters:
     ///   - left: Left anchor point.
     ///   - right: Right anchor point.
+    ///
     func setAnchorPoints(left: CGPoint, right: CGPoint) {
         _leftAnchorPoint = left
         _rightAnchorPoint = right
@@ -116,34 +144,43 @@ class ElasticLayer: CAShapeLayer {
     /// Check if an action (e.g. touches) crosses the band.
     ///
     /// - Parameters:
-    ///   - between: Point 1.
-    ///   - and: Point 2.
+    ///   - between: Anchor point 1.
+    ///   - and: Anchor point 2.
+    ///
     func cross(between p1: CGPoint, and p2: CGPoint) {
         if ((p1.y <= center.y) && (p2.y >= center.y)) || ((p1.y >= center.y) && (p2.y <= center.y)) {
             active = true
         }
     }
     
+    ///
     /// Generates elastic point from given point and bends band to it.
     ///
     /// - Parameters:
     ///   - to: Point to where elastic band should be bent.
+    ///
     func bend(to point: CGPoint) {
         points[1] = elasticPoint(from: center, to: point)
         _bezierPath.interpolateQuadCurve(from: points)
         path = _bezierPath.cgPath
     }
     
-    func initialBend() {
-        points[1] = elasticPoint(from: center, to: center)
+    func stretch() -> CGFloat {
+        return distance(from: center, to: points[1])
+    }
+    
+    func stretch(to point: CGPoint) {
+        points[1] = point
         _bezierPath.interpolateQuadCurve(from: points)
         path = _bezierPath.cgPath
     }
     
+    ///
     /// Snaps elastic band from release point.
     ///
     /// - Parameters:
     ///   - from: Point where elastic band was released.
+    ///
     func snap(from point: CGPoint) {
         if active {
             active = false
